@@ -22,11 +22,16 @@ import journey.started.atm.ui.theme.ATMTheme
 @Composable
 fun OptionScreen(navController: NavHostController) {
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        , horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = stringResource(id = R.string.choice), textAlign = TextAlign.Center,
-            color = colorResource(id = R.color.white),fontWeight = FontWeight.Bold ,fontSize = 40.sp,
+    Column(
+        modifier = Modifier
+            .fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(id = R.string.choice),
+            textAlign = TextAlign.Center,
+            color = colorResource(id = R.color.white),
+            fontWeight = FontWeight.Bold,
+            fontSize = 40.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.first))
@@ -44,7 +49,7 @@ fun OptionScreen(navController: NavHostController) {
         )
         Text(text = stringResource(id = R.string.deposit),
             color = colorResource(id = R.color.white),
-            textAlign = TextAlign.Center,fontSize = 30.sp,
+            textAlign = TextAlign.Center, fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.third))
@@ -53,7 +58,7 @@ fun OptionScreen(navController: NavHostController) {
         )
         Text(text = stringResource(id = R.string.withdraw),
             color = colorResource(id = R.color.white),
-            textAlign = TextAlign.Center,fontSize = 30.sp,
+            textAlign = TextAlign.Center, fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.fourth))
@@ -62,7 +67,7 @@ fun OptionScreen(navController: NavHostController) {
         )
         Text(text = stringResource(id = R.string.exit),
             color = colorResource(id = R.color.white),
-            textAlign = TextAlign.Center,fontSize = 30.sp,
+            textAlign = TextAlign.Center, fontSize = 30.sp,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.fifth))
@@ -77,7 +82,7 @@ fun OptionScreen(navController: NavHostController) {
 @Composable
 fun DefaultPreview() {
     ATMTheme {
-       // OptionScreen()
+        // OptionScreen()
     }
 }
 

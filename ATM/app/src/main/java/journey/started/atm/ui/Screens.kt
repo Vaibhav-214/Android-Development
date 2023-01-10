@@ -27,107 +27,148 @@ import java.text.NumberFormat
 
 
 @Composable
-    fun BalanceScreen(appViewModel: AppViewModel = viewModel()) {
-        val appUiState by appViewModel.uiState.collectAsState()
-        Column(modifier = Modifier
+fun BalanceScreen(appViewModel: AppViewModel = viewModel()) {
+    val appUiState by appViewModel.uiState.collectAsState()
+    Column(
+        modifier = Modifier
             .padding(20.dp)
-            .fillMaxSize()) {
-            Spacer(modifier = Modifier.size(30.dp))
-            Text(text = stringResource(id = R.string.check), fontSize = 35.sp)
-            Spacer(modifier = Modifier.size(height = 50.dp, width = 50.dp))
-            Text(text = stringResource(id = R.string.showBalance),
-                modifier = Modifier.padding(), fontSize = 30.sp)
-            Text(fontSize = 25.sp, text =  NumberFormat.getCurrencyInstance().format(appUiState.balance))
-                
-        }
-
-    }
-
-    @Composable
-    fun Deposit(navHostController: NavHostController, appViewModel: AppViewModel = viewModel()) {
-        Column(modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-
-            Text(text = stringResource(id = R.string.account), fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.padding(10.dp))
-            OutlinedTextField(value = appViewModel.newDeposit ,
-                onValueChange = {appViewModel.changeDeposit(it)},
-                label = {
-                    Text(text = stringResource(id = R.string.dep))
-                },keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number ,imeAction = ImeAction.Go)
-            )
-            Spacer(modifier = Modifier.padding(20.dp))
-            Button(onClick =
-            {
-                appViewModel.addDeposit()
-                navHostController.navigate(Destinations.BALANCE.name)
-            }
-            ) {// always put parenthesis while calling any function
-                Text(text = "PROCEED", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            }
-        }
-        Text(text = "Deposit Money", fontSize = 35.sp, modifier = Modifier.padding(top = 50.dp, start = 20.dp))
-    }
-
-    @Composable
-    fun Withdraw(appViewModel: AppViewModel = viewModel(),navHostController: NavHostController
     ) {
-        Column(modifier = Modifier
+        Spacer(modifier = Modifier.size(30.dp))
+        Text(text = stringResource(id = R.string.check), fontSize = 35.sp)
+        Spacer(modifier = Modifier.size(height = 50.dp, width = 50.dp))
+        Text(
+            text = stringResource(id = R.string.showBalance),
+            modifier = Modifier.padding(), fontSize = 30.sp
+        )
+        Text(fontSize = 25.sp, text = NumberFormat.getCurrencyInstance().format(appUiState.balance))
+
+    }
+
+}
+
+@Composable
+fun Deposit(navHostController: NavHostController, appViewModel: AppViewModel = viewModel()) {
+    Column(
+        modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
-            Text(text = stringResource(id = R.string.account), fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.padding(10.dp))
-            OutlinedTextField(value = appViewModel.amount ,
-                onValueChange = {appViewModel.showWithdraw(it)},
-                label = {
-                    Text(text = stringResource(id = R.string.dep))
-                },keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number ,imeAction = ImeAction.Go)
+        Text(
+            text = stringResource(id = R.string.account),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.padding(10.dp))
+        OutlinedTextField(
+            value = appViewModel.newDeposit,
+            onValueChange = { appViewModel.changeDeposit(it) },
+            label = {
+                Text(text = stringResource(id = R.string.dep))
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Go
             )
-            Spacer(modifier = Modifier.padding(20.dp))
-            Button(onClick = { appViewModel.withdraw()}) {
-                Text(text = "PROCEED", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            }
+        )
+        Spacer(modifier = Modifier.padding(20.dp))
+        Button(onClick =
+        {
+            appViewModel.addDeposit()
+            navHostController.navigate(Destinations.BALANCE.name)
         }
-        Text(text = "Withdraw Money", fontSize = 35.sp, modifier = Modifier.padding(top = 50.dp, start = 20.dp))
+        ) {// always put parenthesis while calling any function
+            Text(text = "PROCEED", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        }
     }
+    Text(
+        text = "Deposit Money",
+        fontSize = 35.sp,
+        modifier = Modifier.padding(top = 50.dp, start = 20.dp)
+    )
+}
 
-    @Composable
-    fun StartScreen(modifier: Modifier = Modifier.fillMaxSize(), appViewModel: AppViewModel = viewModel(),
-                    navHostController: NavHostController
-                    ) {
-        val appUiState = appViewModel.uiState.collectAsState()
-        Column(modifier = modifier) {
-            Text(text = stringResource(id =R.string.bankName),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(50.dp),
-                fontSize = 44.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+@Composable
+fun Withdraw(
+    appViewModel: AppViewModel = viewModel(), navHostController: NavHostController
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
-            Spacer(modifier = Modifier.size(140.dp))
-            OutlinedTextField(value = appViewModel.pin, onValueChange ={appViewModel.changePin(it)},
-                label = { if (appUiState.value.enteredPinWrong) {
+        Text(
+            text = stringResource(id = R.string.account),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.padding(10.dp))
+        OutlinedTextField(
+            value = appViewModel.amount,
+            onValueChange = { appViewModel.showWithdraw(it) },
+            label = {
+                Text(text = stringResource(id = R.string.dep))
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Go
+            )
+        )
+        Spacer(modifier = Modifier.padding(20.dp))
+        Button(onClick = { appViewModel.withdraw() }) {
+            Text(text = "PROCEED", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        }
+    }
+    Text(
+        text = "Withdraw Money",
+        fontSize = 35.sp,
+        modifier = Modifier.padding(top = 50.dp, start = 20.dp)
+    )
+}
+
+@Composable
+fun StartScreen(
+    modifier: Modifier = Modifier.fillMaxSize(), appViewModel: AppViewModel = viewModel(),
+    navHostController: NavHostController
+) {
+    val appUiState = appViewModel.uiState.collectAsState()
+    Column(modifier = modifier) {
+        Text(
+            text = stringResource(id = R.string.bankName),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(50.dp),
+            fontSize = 44.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.size(140.dp))
+        OutlinedTextField(
+            value = appViewModel.pin, onValueChange = { appViewModel.changePin(it) },
+            label = {
+                if (appUiState.value.enteredPinWrong) {
                     Text(text = stringResource(id = R.string.enterAgain))
-                }else {
+                } else {
                     Text(text = stringResource(id = R.string.enter))
-                } }, isError = appUiState.value.enteredPinWrong,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp), shape = CircleShape,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number ,imeAction = ImeAction.Go)
-                , keyboardActions = KeyboardActions(onGo = {
-                    if(appViewModel.checkPin()) navHostController.navigate(Destinations.OPTIONS.name)
-                })
-            )
-        }
+                }
+            }, isError = appUiState.value.enteredPinWrong,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp), shape = CircleShape,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Go
+            ), keyboardActions = KeyboardActions(onGo = {
+                if (appViewModel.checkPin()) navHostController.navigate(Destinations.OPTIONS.name)
+            })
+        )
     }
+}
 
 
 //@Composable
@@ -148,7 +189,6 @@ import java.text.NumberFormat
 //        }
 //        )
 //}
-
 
 
 @Preview(showBackground = true)
