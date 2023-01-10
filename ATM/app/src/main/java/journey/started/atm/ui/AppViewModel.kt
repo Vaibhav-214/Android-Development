@@ -21,7 +21,17 @@ class AppViewModel:ViewModel() {
         pin = enteredPin
     }
    fun checkPin():Boolean {
-       return pin.toInt() == PIN
+       if (pin.toInt() == PIN) {
+           return true
+       }else {
+           _uiState.update { currentState ->
+               currentState.copy(
+                   enteredPinWrong = true
+               )
+           }
+           return false
+       }
+
    }
     var newDeposit by mutableStateOf("")
 
@@ -50,6 +60,7 @@ class AppViewModel:ViewModel() {
             _uiState.update { currentState ->
                 currentState.copy(
                     balance = increasedAmount
+
                 )
             }
         }else {

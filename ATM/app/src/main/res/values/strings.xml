@@ -2,6 +2,7 @@
     <string name="app_name">ATM</string>
     <string name="bankName">VVV Bank</string>
     <string name="enter">Enter PIN</string>
+    <string name="enterAgain">WRONG PIN</string>
     <string name="choice">Select your choice</string>
     <string name="balance">Balance</string>
     <string name="deposit">Deposit</string>
@@ -10,6 +11,7 @@
     <string name="showBalance">Account Balance</string>
     <string name="check">Check Bank Balance</string>
     <string name="dep">Enter Amount</string>
+    <string name="exitapp">Do you want to exit?</string>
     <string name="account">Account Number : 89830089302</string>
 
 </resources>

@@ -40,7 +40,7 @@ fun OptionScreen(navController: NavHostController) {
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.second))
                 .padding(bottom = 55.dp, top = 55.dp)
-                .clickable {navController.navigate(Destinations.BALANCE.name) }
+                .clickable { navController.navigate(Destinations.BALANCE.name) }
         )
         Text(text = stringResource(id = R.string.deposit),
             color = colorResource(id = R.color.white),
@@ -49,7 +49,7 @@ fun OptionScreen(navController: NavHostController) {
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.third))
                 .padding(bottom = 55.dp, top = 55.dp)
-                .clickable { navController.navigate(Destinations.DEPOSIT.name)}
+                .clickable { navController.navigate(Destinations.DEPOSIT.name) }
         )
         Text(text = stringResource(id = R.string.withdraw),
             color = colorResource(id = R.color.white),
@@ -58,7 +58,7 @@ fun OptionScreen(navController: NavHostController) {
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.fourth))
                 .padding(bottom = 55.dp, top = 55.dp)
-                .clickable { navController.navigate(Destinations.WITHDRAW.name)}
+                .clickable { navController.navigate(Destinations.WITHDRAW.name) }
         )
         Text(text = stringResource(id = R.string.exit),
             color = colorResource(id = R.color.white),
@@ -67,7 +67,7 @@ fun OptionScreen(navController: NavHostController) {
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.fifth))
                 .padding(bottom = 55.dp, top = 55.dp)
-                .clickable { navController.navigate(Destinations.START.name)}
+                .clickable { navController.navigate(Destinations.START.name) }
         )
 
     }

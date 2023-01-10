@@ -1,15 +1,15 @@
 package journey.started.atm.ui
 
+import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -37,8 +37,8 @@ import java.text.NumberFormat
             Spacer(modifier = Modifier.size(height = 50.dp, width = 50.dp))
             Text(text = stringResource(id = R.string.showBalance),
                 modifier = Modifier.padding(), fontSize = 30.sp)
-            Text(fontSize = 25.sp, text = NumberFormat.getCurrencyInstance().format(appUiState.balance) )
-
+            Text(fontSize = 25.sp, text =  NumberFormat.getCurrencyInstance().format(appUiState.balance))
+                
         }
 
     }
@@ -103,6 +103,7 @@ import java.text.NumberFormat
     fun StartScreen(modifier: Modifier = Modifier.fillMaxSize(), appViewModel: AppViewModel = viewModel(),
                     navHostController: NavHostController
                     ) {
+        val appUiState = appViewModel.uiState.collectAsState()
         Column(modifier = modifier) {
             Text(text = stringResource(id =R.string.bankName),
                 modifier = Modifier
@@ -112,7 +113,11 @@ import java.text.NumberFormat
 
             Spacer(modifier = Modifier.size(140.dp))
             OutlinedTextField(value = appViewModel.pin, onValueChange ={appViewModel.changePin(it)},
-                label = { Text(text = stringResource(id = R.string.enter)) },
+                label = { if (appUiState.value.enteredPinWrong) {
+                    Text(text = stringResource(id = R.string.enterAgain))
+                }else {
+                    Text(text = stringResource(id = R.string.enter))
+                } }, isError = appUiState.value.enteredPinWrong,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(20.dp), shape = CircleShape,
@@ -125,7 +130,24 @@ import java.text.NumberFormat
     }
 
 
-
+//@Composable
+//private fun ExitDialog() {
+//    val activity = LocalContext.current as Activity
+//
+//    AlertDialog(onDismissRequest = { /*TODO*/ },
+//        title = {stringResource(id = R.string.exitapp)},
+//        text = {stringResource(id = R.string.exit)},
+//        dismissButton = { TextButton(onClick = { /*TODO*/ })  {
+//            Text(text = "No")
+//        }}, confirmButton = {
+//            TextButton(onClick = {
+//                activity.finish()
+//            }) {
+//                Text(text = "Yes")
+//            }
+//        }
+//        )
+//}
 
 
 

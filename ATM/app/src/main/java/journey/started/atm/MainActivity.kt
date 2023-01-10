@@ -45,8 +45,8 @@ fun NavigationHost(navController: NavHostController, appViewModel: AppViewModel 
         // startDestination gives error until we add curly braces
         composable(Destinations.START.name) { StartScreen(navHostController = navController)}
         composable(Destinations.OPTIONS.name) { OptionScreen(navController = navController)}
-        composable(Destinations.BALANCE.name) { BalanceScreen()}
-        composable(Destinations.DEPOSIT.name) { Deposit(navHostController = navController)}
+        composable(Destinations.BALANCE.name) { BalanceScreen(appViewModel = AppViewModel())}
+        composable(Destinations.DEPOSIT.name) { Deposit(navHostController = navController, appViewModel = AppViewModel())}
         composable(Destinations.WITHDRAW.name) { Withdraw(navHostController = navController) }
     }
     }
