@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Week6</string>
+    <string name="add_post">"पोस्ट डालें "</string>
+    <string name="create_post">पोस्ट बनाएँ</string>
+    <string name="post_detail">पोस्ट विवरण</string>
+    <string name="loading">लोड हो रहा है...</string>
+    <string name="error">त्रुटि हुई</string>
+    <string name="users">यूजर्स</string>
+    <string name="posts">पोस्ट</string>
+    <string name="followers">अनुयायियों</string>
+    <string name="following">अनुचर</string>
+    <string name="settings">समायोजन</string>
+    <string name="user_profile">यूजर प्रोफाइल</string>
+</resources>
